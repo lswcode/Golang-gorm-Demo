@@ -110,5 +110,5 @@ func main() {
 		// `gorm:"column:user_name"` 指定列名
 	}
 
-	db.CreateTable(&Boy{})
+	db.Debug().CreateTable(&Boy{}) // 在gorm语句中调用Debug()可以打印出对应的Sql语句
 }
