@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	_ "gorm_project/test1"
 
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
@@ -27,6 +28,7 @@ func main() {
 	}
 	defer db.Close() // 关闭连接
 	// defer用来延迟执行代码，它后面的语句会延迟到函数结束时再调用
+	db.LogMode(true) // 开启日志记录，会打印所有gorm对应的sql语句
 
 	// 创建数据库表格
 
@@ -111,4 +113,7 @@ func main() {
 	}
 
 	db.Debug().CreateTable(&Boy{}) // 在gorm语句中调用Debug()可以打印出对应的Sql语句
+
+	// -------------------------------------
+
 }
